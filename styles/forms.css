@@ -14,14 +14,14 @@
 
 /* Campos */
 .field {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .field label {
   display: block;
   font-size: 14px;
   color: var(--niebla);
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 
 .field input[type="text"],
@@ -32,7 +32,7 @@
   color: var(--humo);
   border: 1.5px solid var(--violeta);
   border-radius: 8px;
-  padding: 12px;
+  padding: 14px;
   font: inherit;
 }
 

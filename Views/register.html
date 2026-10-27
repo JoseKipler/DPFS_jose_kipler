@@ -36,31 +36,31 @@
 
         <div class="field">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
         </div>
 
         <!-- Campo con error (ejemplo de cómo se ve) -->
         <div class="field field--error">
           <label for="apellido">Apellido</label>
-          <input type="text" id="apellido" name="apellido" aria-invalid="true" aria-describedby="apellido-error">
+          <input type="text" id="apellido" name="apellido" aria-invalid="true" aria-describedby="apellido-error" required>
           <p class="field__error" id="apellido-error">El apellido es obligatorio.</p>
         </div>
 
         <div class="field field--error">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" value="juan@correo" aria-invalid="true" aria-describedby="email-error">
+          <input type="email" id="email" name="email" value="juan@correo" aria-invalid="true" aria-describedby="email-error" required>
           <p class="field__error" id="email-error">Ingresá un email válido.</p>
         </div>
 
         <div class="field">
           <label for="password">Contraseña</label>
-          <input type="password" id="password" name="password" aria-describedby="password-hint">
+          <input type="password" id="password" name="password" aria-describedby="password-hint" required>
           <p class="field__hint" id="password-hint">Mínimo 8 caracteres.</p>
         </div>
 
         <div class="field">
           <label for="password2">Repetir contraseña</label>
-          <input type="password" id="password2" name="password2">
+          <input type="password" id="password2" name="password2" required>
         </div>
 
         <!-- <div class="field">

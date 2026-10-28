@@ -1,0 +1,29 @@
+{
+  "name": "dpfs_jose_kipler",
+  "version": "1.0.0",
+  "description": "NEXUS es un e-commerce especializado en productos de tecnología y gaming, pensado para ofrecer una experiencia de compra simple, moderna y segura. El sitio permitirá explorar diferentes categorías de productos, consultar información detallada de cada artículo, registrarse como usuario y realizar compras mediante un carrito.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseKipler/DPFS_jose_kipler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JoseKipler/DPFS_jose_kipler/issues"
+  },
+  "homepage": "https://github.com/JoseKipler/DPFS_jose_kipler#readme",
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

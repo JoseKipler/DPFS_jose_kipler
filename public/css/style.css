@@ -19,6 +19,14 @@ body {
   background-color: var(--noche);
   color: var(--humo);
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
 }
 
 h1, h2, h3, .logo {

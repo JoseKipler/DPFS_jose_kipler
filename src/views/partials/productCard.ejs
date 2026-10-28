@@ -1,0 +1,9 @@
+<article class="card">
+  <a href="/products/<%= product.id %>">
+    <div class="placeholder">Imagen del producto</div>
+    <h3><%= product.name %></h3>
+  </a>
+  <p class="card__price">$ <%= product.price.toLocaleString('es-AR') %></p>
+  <p class="card__installments">12 cuotas sin interés</p>
+  <button class="btn btn-primary">Agregar al carrito</button>
+</article>

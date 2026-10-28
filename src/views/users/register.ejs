@@ -1,32 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crear cuenta | NEXUS - Tecnología & Gaming</title>
-  <link rel="icon" type="image/svg+xml" href="../images/favico.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/style.css">
-  <link rel="stylesheet" href="../styles/forms.css">
-</head>
+<%- include('../partials/head') %>
 <body>
 
-  <header class="header">
-    <div class="container header__inner">
-      <a href="index.html" class="logo">Nexus<span> Tecnología & Gaming</span></a>
-      <nav class="header__links">
-        <a href="index.html">Home</a>
-        <a href="#">Productos</a>
-      </nav>
-      <nav class="header__actions">
-        <a href="register.html">Regístrate</a>
-        <a href="login.html">Iniciar sesión</a>
-        <a href="productCart.html">Carrito</a>
-      </nav>
-    </div>
-  </header>
+  <%- include('../partials/header') %>
 
   <main class="container">
     <section class="auth">
@@ -77,44 +54,12 @@
 
         <button type="submit" class="btn btn-primary">Crear cuenta</button>
 
-        <p class="auth__alt">¿Ya tenés cuenta? <a href="login.html">Iniciá sesión</a></p>
+        <p class="auth__alt">¿Ya tenés cuenta? <a href="/users/login">Iniciá sesión</a></p>
       </form>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__columns">
-        <div>
-          <h3>Productos</h3>
-          <ul>
-            <li><a href="#">Teclados</a></li>
-            <li><a href="#">Monitores</a></li>
-            <li><a href="#">Auriculares</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contacto</h3>
-          <ul>
-            <li>Ayuda</li>
-            <li>Correo / teléfono</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Sobre nosotros</h3>
-          <ul>
-            <li>Trabajá con nosotros</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Redes sociales</h3>
-          <ul>
-            <li>Instagram / X</li>
-          </ul>
-        </div>
-      </div>
-      <p class="footer__copy">© 2026 Nexus Tecnología & Gaming</p>
-    </div>
-  </footer>
+  <%- include('../partials/footer') %>
+
 </body>
 </html>

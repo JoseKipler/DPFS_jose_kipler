@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <main class="container">
+    <section class="auth auth--wide">
+      <h1>Editar producto</h1>
+
+      <form action="#" method="post" enctype="multipart/form-data" novalidate>
+
+        <div class="field">
+          <label for="name">Nombre del producto</label>
+          <input type="text" id="name" name="name" value="<%= product.name %>" required>
+        </div>
+
+        <div class="field">
+          <label for="description">Descripción</label>
+          <textarea id="description" name="description" rows="4"><%= product.description %></textarea>
+        </div>
+
+        <div class="field">
+          <label>Imagen actual</label>
+          <div class="placeholder">Imagen del producto</div>
+          <label for="image" class="field__hint">Subí una nueva para reemplazarla (opcional)</label>
+          <input type="file" id="image" name="image" accept="image/*">
+        </div>
+
+        <div class="field">
+          <label for="category">Categoría</label>
+          <select id="category" name="category" required>
+            <option value="">Elegí una categoría</option>
+            <option value="teclados" <%= product.category === 'teclados' ? 'selected' : '' %>>Teclados</option>
+            <option value="mouse" <%= product.category === 'mouse' ? 'selected' : '' %>>Mouse</option>
+            <option value="auriculares" <%= product.category === 'auriculares' ? 'selected' : '' %>>Auriculares</option>
+            <option value="monitores" <%= product.category === 'monitores' ? 'selected' : '' %>>Monitores</option>
+            <option value="placas-de-video" <%= product.category === 'placas-de-video' ? 'selected' : '' %>>Placas de video</option>
+            <option value="sillas" <%= product.category === 'sillas' ? 'selected' : '' %>>Sillas</option>
+          </select>
+        </div>
+
+        <fieldset class="field options">
+          <legend>Colores</legend>
+          <label class="check"><input type="checkbox" name="colors" value="negro" <%= product.colors.includes('negro') ? 'checked' : '' %>> <span>Negro</span></label>
+          <label class="check"><input type="checkbox" name="colors" value="blanco" <%= product.colors.includes('blanco') ? 'checked' : '' %>> <span>Blanco</span></label>
+          <label class="check"><input type="checkbox" name="colors" value="rojo" <%= product.colors.includes('rojo') ? 'checked' : '' %>> <span>Rojo</span></label>
+          <label class="check"><input type="checkbox" name="colors" value="azul" <%= product.colors.includes('azul') ? 'checked' : '' %>> <span>Azul</span></label>
+        </fieldset>
+
+        <div class="field">
+          <label for="price">Precio</label>
+          <input type="number" id="price" name="price" min="0" step="1" value="<%= product.price %>" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <p class="auth__alt"><a href="/products/<%= product.id %>">Cancelar y volver al producto</a></p>
+      </form>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

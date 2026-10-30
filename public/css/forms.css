@@ -127,3 +127,46 @@
   font-size: 14px;
   color: var(--niebla);
 }
+
+.auth--wide {
+  max-width: 640px;
+}
+
+.field input[type="number"],
+.field select,
+.field textarea {
+  width: 100%;
+  background-color: var(--noche);
+  color: var(--humo);
+  border: 1.5px solid var(--violeta);
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field select:focus-visible,
+.field textarea:focus-visible,
+.field input[type="number"]:focus-visible {
+  outline: 3px solid var(--menta);
+  outline-offset: 2px;
+}
+
+.options {
+  border: none;
+  padding: 0;
+}
+
+.options legend {
+  font-size: 14px;
+  color: var(--niebla);
+  margin-bottom: 8px;
+}
+
+.options .check {
+  display: inline-flex;
+  margin-right: 16px;
+}

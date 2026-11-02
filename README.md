@@ -62,6 +62,14 @@ Se eligió como referencia internacional por su identidad visual orientada al ga
 ## Tablero de trabajo:
 Seguimiento del Sprint 2 en Trello: https://trello.com/b/BF3Fr8pY/nexus-store-sprint-2 
 
+## Estado del proyecto: 
+
+El proyecto se encuentra en desarrollo. Durante el Sprint 3 se incorporaron Node.js, Express y EJS, reorganizando la aplicación mediante rutas, controladores y vistas.
+
+Se implementaron parciales reutilizables para el encabezado, pie de página, etiquetas del documento y tarjetas de productos. También se incorporaron formularios de creación y edición de productos.
+
+Actualmente, los formularios son visuales y todavía no cuentan con persistencia de datos.
+
 
 ## Identidad visual
 

@@ -59,6 +59,34 @@ Sitio web: https://www.razer.com/latam-es  (https://www.razer.com)
 Se eligió como referencia internacional por su identidad visual orientada al gaming, el uso del color verde característico de la marca y la presentación de sus productos. Se analizarán sus imágenes, la organización de las especificaciones técnicas y la estética de sus páginas para inspirar el diseño de NEXUS, adaptándolo a una tienda de tecnología dirigida al mercado argentino.
 
 
+## Estructura del proyecto
+
+```
+DPFS_jose_kipler/
+├── app.js                  (servidor Express)
+├── package.json
+├── README.md
+├── retro.md
+├── wireframes/             (wireframes del Sprint 1)
+│   ├── Home.png
+│   ├── Detalle de producto.png
+│   ├── Carrito.png
+│   ├── Formulario de registro.png
+│   └── Formulario de Login.png
+├── public/
+│   ├── css/                (style, home, productDetail, cart, forms)
+│   └── images/             (favico.svg)
+└── src/
+    ├── routes/             (main, products, users)
+    ├── controllers/        (main, products, users)
+    └── views/
+        ├── index.ejs
+        ├── partials/       (head, header, footer, productCard)
+        ├── products/       (productList, productDetail, productCart, productCreate, productEdit)
+        └── users/          (register, login)
+```
+
+
 ## Tablero de trabajo:
 Seguimiento del Sprint 2 en Trello: https://trello.com/b/BF3Fr8pY/nexus-store-sprint-2 
 

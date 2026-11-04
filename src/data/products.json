@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Teclado mecánico RGB 60%",
+    "description": "Teclado mecánico compacto con iluminación RGB y switches intercambiables.",
+    "image": "default.png",
+    "category": "teclados",
+    "colors": ["negro", "blanco"],
+    "price": 85000
+  },
+  {
+    "id": 2,
+    "name": "Teclado mecánico TKL inalámbrico",
+    "description": "Teclado sin teclado numérico, conexión Bluetooth y batería de larga duración.",
+    "image": "default.png",
+    "category": "teclados",
+    "colors": ["negro"],
+    "price": 112000
+  },
+  {
+    "id": 3,
+    "name": "Mouse gamer inalámbrico 16000 DPI",
+    "description": "Mouse liviano con sensor óptico de alta precisión y botones programables.",
+    "image": "default.png",
+    "category": "mouse",
+    "colors": ["negro", "blanco"],
+    "price": 42000
+  },
+  {
+    "id": 4,
+    "name": "Mouse gamer con cable",
+    "description": "Mouse ergonómico con cable trenzado, iluminación RGB y 6 botones.",
+    "image": "default.png",
+    "category": "mouse",
+    "colors": ["negro", "rojo"],
+    "price": 28500
+  },
+  {
+    "id": 5,
+    "name": "Auriculares 7.1 con micrófono",
+    "description": "Auriculares con sonido envolvente virtual 7.1 y micrófono desmontable.",
+    "image": "default.png",
+    "category": "auriculares",
+    "colors": ["negro", "rojo"],
+    "price": 68000
+  },
+  {
+    "id": 6,
+    "name": "Auriculares inalámbricos de baja latencia",
+    "description": "Auriculares inalámbricos con conexión de 2.4 GHz y 30 horas de batería.",
+    "image": "default.png",
+    "category": "auriculares",
+    "colors": ["negro", "blanco", "azul"],
+    "price": 96000
+  },
+  {
+    "id": 7,
+    "name": "Monitor 24\" 144Hz",
+    "description": "Monitor gamer Full HD con tasa de refresco de 144Hz y 1 ms de respuesta.",
+    "image": "default.png",
+    "category": "monitores",
+    "colors": ["negro"],
+    "price": 210000
+  },
+  {
+    "id": 8,
+    "name": "Monitor curvo 27\" 165Hz",
+    "description": "Monitor curvo QHD de 27 pulgadas con 165Hz y soporte regulable.",
+    "image": "default.png",
+    "category": "monitores",
+    "colors": ["negro"],
+    "price": 340000
+  },
+  {
+    "id": 9,
+    "name": "Placa de video 8GB GDDR6",
+    "description": "Placa de video para jugar en Full HD con trazado de rayos y doble ventilador.",
+    "image": "default.png",
+    "category": "placas-de-video",
+    "colors": ["negro"],
+    "price": 620000
+  },
+  {
+    "id": 10,
+    "name": "Placa de video 12GB GDDR6",
+    "description": "Placa de video de alto rendimiento para jugar en QHD con refrigeración triple.",
+    "image": "default.png",
+    "category": "placas-de-video",
+    "colors": ["negro"],
+    "price": 890000
+  },
+  {
+    "id": 11,
+    "name": "Silla gamer ergonómica",
+    "description": "Silla con respaldo reclinable, soporte lumbar y apoyabrazos regulables.",
+    "image": "default.png",
+    "category": "sillas",
+    "colors": ["negro", "rojo", "azul"],
+    "price": 245000
+  },
+  {
+    "id": 12,
+    "name": "Silla gamer con apoyapiés",
+    "description": "Silla reclinable hasta 180 grados con apoyapiés retráctil y cojines.",
+    "image": "default.png",
+    "category": "sillas",
+    "colors": ["negro", "blanco"],
+    "price": 310000
+  }
+]

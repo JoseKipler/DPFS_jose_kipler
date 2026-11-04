@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "firstName": "Jose",
+    "lastName": "Kipler",
+    "email": "admin@nexus.com",
+    "password": "Nexus1234",
+    "category": "admin",
+    "image": "default-user.png"
+  },
+  {
+    "id": 2,
+    "firstName": "Lucía",
+    "lastName": "Fernández",
+    "email": "lucia.fernandez@example.com",
+    "password": "Clave1234",
+    "category": "user",
+    "image": "default-user.png"
+  },
+  {
+    "id": 3,
+    "firstName": "Mateo",
+    "lastName": "Rodríguez",
+    "email": "mateo.rodriguez@example.com",
+    "password": "Clave1234",
+    "category": "user",
+    "image": "default-user.png"
+  },
+  {
+    "id": 4,
+    "firstName": "Camila",
+    "lastName": "Gómez",
+    "email": "camila.gomez@example.com",
+    "password": "Clave1234",
+    "category": "user",
+    "image": "default-user.png"
+  },
+  {
+    "id": 5,
+    "firstName": "Santiago",
+    "lastName": "Pérez",
+    "email": "santiago.perez@example.com",
+    "password": "Clave1234",
+    "category": "user",
+    "image": "default-user.png"
+  }
+]

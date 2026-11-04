@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon --ignore src/data/ app.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   "homepage": "https://github.com/JoseKipler/DPFS_jose_kipler#readme",
   "dependencies": {
     "ejs": "^7.0.2",
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "method-override": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

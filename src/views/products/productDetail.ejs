@@ -7,14 +7,12 @@
 
   <main class="container">
 
-    <!-- Titulo productos -->
     <nav class="breadcrumb" aria-label="Ubicación">
       <a href="/">Inicio</a> ›
-      <a href="#">Teclados</a> ›
-      <span>Nombre del producto</span>
+      <a href="/products" style="text-transform: capitalize;"><%= product.category.replace(/-/g, ' ') %></a> ›
+      <span><%= product.name %></span>
     </nav>
 
-    <!-- Producto -->
     <section class="product">
 
       <div class="gallery">
@@ -27,17 +25,13 @@
       </div>
 
       <div class="info">
-        <p class="info__brand">Marca del producto</p>
-        <h1>Nombre del producto</h1>
-        <p class="info__rating">Opiniones de compra: 4,5 de 5 (24 opiniones)</p>
+        <h1><%= product.name %></h1>
 
         <div class="info__prices">
-          <span class="info__price">$ 000.000</span>
-          <span class="info__old-price">$ 000.000</span>
-          <span class="info__discount">-15%</span>
+          <span class="info__price">$ <%= product.price.toLocaleString('es-AR') %></span>
         </div>
         <p class="info__installments">12 cuotas sin interés</p>
-        <p class="info__stock">Stock disponible: 12 unidades</p>
+        <p class="info__stock" style="text-transform: capitalize;">Colores: <%= product.colors.join(', ') %></p>
 
         <div class="quantity">
           <label for="cantidad">Cantidad</label>
@@ -50,7 +44,11 @@
 
         <button class="btn btn-primary info__add">Agregar al carrito</button>
         <a href="/products/cart" class="btn btn-secondary info__buy">Comprar ahora</a>
-        <a href="/products/<%= id %>/edit" class="btn btn-secondary info__buy">Editar producto</a>
+        <a href="/products/<%= product.id %>/edit" class="btn btn-secondary info__buy">Editar producto</a>
+        <form action="/products/<%= product.id %>?_method=DELETE" method="POST"
+              onsubmit="return confirm('¿Seguro que querés eliminar este producto?')">
+          <button type="submit" class="btn btn-danger info__buy">Eliminar producto</button>
+        </form>
 
         <ul class="info__benefits">
           <li>Envío a todo el país</li>
@@ -61,64 +59,17 @@
 
     </section>
 
-    <!-- Descripción -->
     <section class="section">
       <h2>Descripción</h2>
-      <p class="description">
-        Acá va la descripción del producto: para qué sirve, a quién está dirigido
-        y cuáles son sus principales características.
-      </p>
+      <p class="description"><%= product.description %></p>
     </section>
 
-    <!-- Especificaciones -->
-    <section class="section">
-      <h2>Especificaciones</h2>
-      <table class="specs">
-        <tbody>
-          <tr><th>Conexión</th><td>USB / Inalámbrico</td></tr>
-          <tr><th>Layout</th><td>Español Latinoamérica</td></tr>
-          <tr><th>Switches</th><td>Red / Blue / Brown</td></tr>
-          <tr><th>Iluminación</th><td>RGB</td></tr>
-          <tr><th>Garantía</th><td>12 meses</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Relacionados card -->
     <section class="section">
       <h2>También te puede interesar</h2>
       <div class="products">
-
-        <article class="card">
-          <a href="/products/1">
-            <div class="placeholder">Imagen del producto</div>
-            <h3>Nombre del producto</h3>
-          </a>
-          <p class="card__price">$ 000.000</p>
-          <p class="card__installments">12 cuotas sin interés</p>
-          <button class="btn btn-primary">Agregar al carrito</button>
-        </article>
-
-        <article class="card">
-          <a href="/products/1">
-            <div class="placeholder">Imagen del producto</div>
-            <h3>Nombre del producto</h3>
-          </a>
-          <p class="card__price">$ 000.000</p>
-          <p class="card__installments">12 cuotas sin interés</p>
-          <button class="btn btn-primary">Agregar al carrito</button>
-        </article>
-
-        <article class="card">
-          <a href="/products/1">
-            <div class="placeholder">Imagen del producto</div>
-            <h3>Nombre del producto</h3>
-          </a>
-          <p class="card__price">$ 000.000</p>
-          <p class="card__installments">12 cuotas sin interés</p>
-          <button class="btn btn-primary">Agregar al carrito</button>
-        </article>
-
+        <% related.forEach(item => { %>
+          <%- include('../partials/productCard', { product: item }) %>
+        <% }) %>
       </div>
     </section>
 

@@ -9,7 +9,7 @@
     <section class="auth auth--wide">
       <h1>Crear producto</h1>
 
-      <form action="#" method="post" enctype="multipart/form-data" novalidate>
+      <form action="/products" method="POST" novalidate>
 
         <div class="field">
           <label for="name">Nombre del producto</label>
@@ -22,8 +22,9 @@
         </div>
 
         <div class="field">
-          <label for="image">Imagen</label>
-          <input type="file" id="image" name="image" accept="image/*">
+          <label for="image">Imagen (nombre del archivo)</label>
+          <input type="text" id="image" name="image" value="default.png">
+          <p class="field__hint">Tiene que ser un archivo de public/images. La subida de archivos se agrega más adelante.</p>
         </div>
 
         <div class="field">

@@ -5,7 +5,10 @@
     "description": "Teclado mecánico compacto con iluminación RGB y switches intercambiables.",
     "image": "default.png",
     "category": "teclados",
-    "colors": ["negro", "blanco"],
+    "colors": [
+      "negro",
+      "blanco"
+    ],
     "price": 85000
   },
   {
@@ -14,8 +17,10 @@
     "description": "Teclado sin teclado numérico, conexión Bluetooth y batería de larga duración.",
     "image": "default.png",
     "category": "teclados",
-    "colors": ["negro"],
-    "price": 112000
+    "colors": [
+      "negro"
+    ],
+    "price": 100000
   },
   {
     "id": 3,
@@ -23,8 +28,11 @@
     "description": "Mouse liviano con sensor óptico de alta precisión y botones programables.",
     "image": "default.png",
     "category": "mouse",
-    "colors": ["negro", "blanco"],
-    "price": 42000
+    "colors": [
+      "negro",
+      "blanco"
+    ],
+    "price": 12345
   },
   {
     "id": 4,
@@ -32,7 +40,10 @@
     "description": "Mouse ergonómico con cable trenzado, iluminación RGB y 6 botones.",
     "image": "default.png",
     "category": "mouse",
-    "colors": ["negro", "rojo"],
+    "colors": [
+      "negro",
+      "rojo"
+    ],
     "price": 28500
   },
   {
@@ -41,7 +52,10 @@
     "description": "Auriculares con sonido envolvente virtual 7.1 y micrófono desmontable.",
     "image": "default.png",
     "category": "auriculares",
-    "colors": ["negro", "rojo"],
+    "colors": [
+      "negro",
+      "rojo"
+    ],
     "price": 68000
   },
   {
@@ -50,7 +64,11 @@
     "description": "Auriculares inalámbricos con conexión de 2.4 GHz y 30 horas de batería.",
     "image": "default.png",
     "category": "auriculares",
-    "colors": ["negro", "blanco", "azul"],
+    "colors": [
+      "negro",
+      "blanco",
+      "azul"
+    ],
     "price": 96000
   },
   {
@@ -59,7 +77,9 @@
     "description": "Monitor gamer Full HD con tasa de refresco de 144Hz y 1 ms de respuesta.",
     "image": "default.png",
     "category": "monitores",
-    "colors": ["negro"],
+    "colors": [
+      "negro"
+    ],
     "price": 210000
   },
   {
@@ -68,7 +88,9 @@
     "description": "Monitor curvo QHD de 27 pulgadas con 165Hz y soporte regulable.",
     "image": "default.png",
     "category": "monitores",
-    "colors": ["negro"],
+    "colors": [
+      "negro"
+    ],
     "price": 340000
   },
   {
@@ -77,7 +99,9 @@
     "description": "Placa de video para jugar en Full HD con trazado de rayos y doble ventilador.",
     "image": "default.png",
     "category": "placas-de-video",
-    "colors": ["negro"],
+    "colors": [
+      "negro"
+    ],
     "price": 620000
   },
   {
@@ -86,7 +110,9 @@
     "description": "Placa de video de alto rendimiento para jugar en QHD con refrigeración triple.",
     "image": "default.png",
     "category": "placas-de-video",
-    "colors": ["negro"],
+    "colors": [
+      "negro"
+    ],
     "price": 890000
   },
   {
@@ -95,7 +121,11 @@
     "description": "Silla con respaldo reclinable, soporte lumbar y apoyabrazos regulables.",
     "image": "default.png",
     "category": "sillas",
-    "colors": ["negro", "rojo", "azul"],
+    "colors": [
+      "negro",
+      "rojo",
+      "azul"
+    ],
     "price": 245000
   },
   {
@@ -104,7 +134,44 @@
     "description": "Silla reclinable hasta 180 grados con apoyapiés retráctil y cojines.",
     "image": "default.png",
     "category": "sillas",
-    "colors": ["negro", "blanco"],
+    "colors": [
+      "negro",
+      "blanco"
+    ],
     "price": 310000
+  },
+  {
+    "id": 13,
+    "name": "Teclado nuevo ",
+    "description": "Es para probar que ande",
+    "image": "default.png",
+    "category": "",
+    "colors": [
+      "negro",
+      "blanco"
+    ],
+    "price": 20000
+  },
+  {
+    "id": 14,
+    "name": "Teclado nuevo 2",
+    "description": "Para probar que ande nuevamente ",
+    "image": "default.png",
+    "category": "",
+    "colors": [
+      "negro"
+    ],
+    "price": 22000
+  },
+  {
+    "id": 15,
+    "name": "Tecladitooo",
+    "description": "Para probar nuevamente que funcionme bien ",
+    "image": "default.png",
+    "category": "",
+    "colors": [
+      "rojo"
+    ],
+    "price": 22
   }
 ]

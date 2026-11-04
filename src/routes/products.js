@@ -4,8 +4,11 @@ const productsController = require('../controllers/productsController');
 
 router.get('/', productsController.list);
 router.get('/create', productsController.create);
+router.post('/', productsController.store);
 router.get('/cart', productsController.cart);
 router.get('/:id/edit', productsController.edit);
+router.put('/:id', productsController.update);
+router.delete('/:id', productsController.destroy);
 router.get('/:id', productsController.detail);
 
 module.exports = router;

@@ -139,39 +139,5 @@
       "blanco"
     ],
     "price": 310000
-  },
-  {
-    "id": 13,
-    "name": "Teclado nuevo ",
-    "description": "Es para probar que ande",
-    "image": "default.png",
-    "category": "",
-    "colors": [
-      "negro",
-      "blanco"
-    ],
-    "price": 20000
-  },
-  {
-    "id": 14,
-    "name": "Teclado nuevo 2",
-    "description": "Para probar que ande nuevamente ",
-    "image": "default.png",
-    "category": "",
-    "colors": [
-      "negro"
-    ],
-    "price": 22000
-  },
-  {
-    "id": 15,
-    "name": "Tecladitooo",
-    "description": "Para probar nuevamente que funcionme bien ",
-    "image": "default.png",
-    "category": "",
-    "colors": [
-      "rojo"
-    ],
-    "price": 22
   }
 ]

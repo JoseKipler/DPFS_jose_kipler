@@ -4,7 +4,7 @@
     "firstName": "Jose",
     "lastName": "Kipler",
     "email": "admin@nexus.com",
-    "password": "Nexus1234",
+    "password": "$2b$10$UeXifx60sPrKze12Q/UG1uwwMqblUOZASMd2IFrWbheq4OybMvEai",
     "category": "admin",
     "image": "default-user.png"
   },
@@ -13,7 +13,7 @@
     "firstName": "Lucía",
     "lastName": "Fernández",
     "email": "lucia.fernandez@example.com",
-    "password": "Clave1234",
+    "password": "$2b$10$46FDNzvkb6bt3TD0VhIfnuEyZ/VQ68J78peoExB9RYUN7jwEctrYS",
     "category": "user",
     "image": "default-user.png"
   },
@@ -22,7 +22,7 @@
     "firstName": "Mateo",
     "lastName": "Rodríguez",
     "email": "mateo.rodriguez@example.com",
-    "password": "Clave1234",
+    "password": "$2b$10$zyx/OsMHJiKq.LCx0wfTKudKqoa6ei1Tfsz9ncMExzY1t9lWusS.a",
     "category": "user",
     "image": "default-user.png"
   },
@@ -31,7 +31,7 @@
     "firstName": "Camila",
     "lastName": "Gómez",
     "email": "camila.gomez@example.com",
-    "password": "Clave1234",
+    "password": "$2b$10$b9CqGYkzpeNTC/rmgkQ8ie4uWfM3ZokEvv0zzfEfYGvs1R/YIidzG",
     "category": "user",
     "image": "default-user.png"
   },
@@ -40,7 +40,7 @@
     "firstName": "Santiago",
     "lastName": "Pérez",
     "email": "santiago.perez@example.com",
-    "password": "Clave1234",
+    "password": "$2b$10$wK3kH7TF7qwxFxCxRZkQ8enMCqLg8Nq6/u4lBZGT6.8Q1i1jPXj9u",
     "category": "user",
     "image": "default-user.png"
   }

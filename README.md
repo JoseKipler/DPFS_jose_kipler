@@ -68,15 +68,12 @@ DPFS_jose_kipler/
 ├── README.md
 ├── retro.md
 ├── wireframes/             (wireframes del Sprint 1)
-│   ├── Home.png
-│   ├── Detalle de producto.png
-│   ├── Carrito.png
-│   ├── Formulario de registro.png
-│   └── Formulario de Login.png
 ├── public/
 │   ├── css/                (style, home, productDetail, cart, forms)
 │   └── images/             (favico.svg)
 └── src/
+    ├── data/               (products.json, users.json)
+    ├── models/             (Product.js)
     ├── routes/             (main, products, users)
     ├── controllers/        (main, products, users)
     └── views/
@@ -89,6 +86,7 @@ DPFS_jose_kipler/
 
 ## Tablero de trabajo:
 Seguimiento del Sprint 2 en Trello: https://trello.com/b/BF3Fr8pY/nexus-store-sprint-2 
+Seguimiento en trello: https://trello.com/b/BF3Fr8pY/nexus-tecnologia-gaming
 
 ## Estado del proyecto: 
 
@@ -97,6 +95,8 @@ El proyecto se encuentra en desarrollo. Durante el Sprint 3 se incorporaron Node
 Se implementaron parciales reutilizables para el encabezado, pie de página, etiquetas del documento y tarjetas de productos. También se incorporaron formularios de creación y edición de productos.
 
 Actualmente, los formularios son visuales y todavía no cuentan con persistencia de datos.
+
+Sprint 4: los productos se guardan en `src/data/products.json` y cuentan con un CRUD completo (listado, detalle, creación, edición y eliminación). Los datos de usuarios de prueba están en `src/data/users.json`.
 
 
 ## Identidad visual

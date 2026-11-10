@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <main class="container">
+    <section class="auth profile">
+      <% if (user.image && user.image !== 'default-user.png') { %>
+        <img class="profile__avatar" src="/images/users/<%= user.image %>" alt="Foto de perfil de <%= user.firstName %>">
+      <% } else { %>
+        <div class="profile__avatar profile__avatar--initial"><%= user.firstName.charAt(0).toUpperCase() %></div>
+      <% } %>
+
+      <h1><%= user.firstName %> <%= user.lastName %></h1>
+      <p class="profile__email"><%= user.email %></p>
+      <p class="profile__role">Tipo de cuenta: <%= user.category === 'admin' ? 'Administrador' : 'Usuario' %></p>
+
+      <div class="profile__actions">
+        <a href="/products" class="btn btn-secondary">Ver productos</a>
+        <form action="/users/logout" method="POST">
+          <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

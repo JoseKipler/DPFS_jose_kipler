@@ -229,6 +229,28 @@ ul {
   background-color: rgba(255, 107, 129, 0.12);
 }
 
+
+.header__logout {
+  display: inline;
+}
+
+.header__user {
+  color: var(--menta);
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.link-button:hover {
+  color: var(--menta);
+}
+
 @media (max-width: 500px) {
   .menu__list {
     gap: 16px;

@@ -43,5 +43,14 @@
     "password": "$2b$10$wK3kH7TF7qwxFxCxRZkQ8enMCqLg8Nq6/u4lBZGT6.8Q1i1jPXj9u",
     "category": "user",
     "image": "default-user.png"
+  },
+  {
+    "id": 6,
+    "firstName": "Jose",
+    "lastName": "Kip",
+    "email": "jose@nexus.com",
+    "password": "$2b$10$sFvnekPIMwm/MdybMPus7evHmN6lAa4ft9JoOeRV0XQbpPJAw59.q",
+    "category": "user",
+    "image": "user-1794232577985.png"
   }
 ]

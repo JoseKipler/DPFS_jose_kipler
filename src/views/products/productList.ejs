@@ -1,22 +1,39 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <%- include('../partials/head') %>
+
 <body>
 
   <%- include('../partials/header') %>
 
   <main class="container">
+
     <section class="section">
+
       <div class="section__head">
+
         <h1>Todos los productos</h1>
-        <a href="/products/create" class="btn btn-secondary">Crear producto</a>
+
+        <% if (isLogged) { %>
+          <a href="/products/create" class="btn btn-secondary">Crear producto</a>
+        <% } %>
+
       </div>
+
       <div class="products">
+
         <% products.forEach(product => { %>
+
           <%- include('../partials/productCard', { product: product }) %>
+
         <% }) %>
+
       </div>
+
     </section>
+
   </main>
 
   <%- include('../partials/footer') %>

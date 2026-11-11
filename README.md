@@ -61,26 +61,36 @@ Se eligió como referencia internacional por su identidad visual orientada al ga
 
 ## Estructura del proyecto
 
-```
+```text
 DPFS_jose_kipler/
-├── app.js                  (servidor Express)
+├── app.js                         # Servidor Express
+├── scripts/                       # Scripts auxiliares (hashPasswords.js)
 ├── package.json
 ├── README.md
 ├── retro.md
-├── wireframes/             (wireframes del Sprint 1)
+├── wireframes/                    # Wireframes del Sprint 1
 ├── public/
-│   ├── css/                (style, home, productDetail, cart, forms)
-│   └── images/             (favico.svg)
+│   ├── css/                       # Hojas de estilo
+│   └── images/
+│       ├── favicon.svg
+│       └── users/                 # Fotos de perfil de usuarios
 └── src/
-    ├── data/               (products.json, users.json)
-    ├── models/             (Product.js)
-    ├── routes/             (main, products, users)
-    ├── controllers/        (main, products, users)
+    ├── data/                      # Datos JSON (products.json, users.json)
+    ├── middlewares/
+    │   ├── uploadUserImage.js     # Carga de imágenes de perfil
+    │   ├── userLoggedMiddleware.js
+    │   ├── guestMiddleware.js
+    │   └── authMiddleware.js
+    ├── models/
+    │   ├── Product.js
+    │   └── User.js
+    ├── routes/                    # Rutas principales, productos y usuarios
+    ├── controllers/               # Controladores principales, productos y usuarios
     └── views/
         ├── index.ejs
-        ├── partials/       (head, header, footer, productCard)
-        ├── products/       (productList, productDetail, productCart, productCreate, productEdit)
-        └── users/          (register, login)
+        ├── partials/              # Componentes reutilizables
+        ├── products/              # Vistas de productos y carrito
+        └── users/                 # Vistas de registro e inicio de sesión
 ```
 
 
@@ -98,6 +108,9 @@ Actualmente, los formularios son visuales y todavía no cuentan con persistencia
 
 Sprint 4: los productos se guardan en `src/data/products.json` y cuentan con un CRUD completo (listado, detalle, creación, edición y eliminación). Los datos de usuarios de prueba están en `src/data/users.json`.
 
+
+- **Sprint 5:** registro con foto de perfil (Multer) y contraseña encriptada (bcrypt), login, logout, perfil, función "Recordarme" con cookie firmada y rutas separadas para huéspedes y usuarios con sesión.
+- **Pendiente:** el carrito todavía no guarda productos.
 
 ## Identidad visual
 

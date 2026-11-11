@@ -99,3 +99,25 @@ Dinámica: estrella de mar.
 
 ## Conclusiones
 Aprendí a organizar una aplicación con Express y EJS, y que los partials evitan repetir código. Lo que más me costó fueron las rutas de los `include` y el ajuste del layout con flex. Para el Sprint 4 quiero trabajar el CRUD con JSON paso a paso, probando cada ruta antes de pasar a la siguiente.
+
+
+# Retrospectiva Sprint 4
+
+## Comenzar a hacer
+- Cerrar `products.json` y `users.json` en el editor mientras pruebo, porque el servidor los modifica y VS Code me avisó de un conflicto al guardar.
+- Anotar en el tablero los errores que me llevan más tiempo, para encontrarlos más rápido la próxima vez.
+
+## Hacer más
+- Probar cada ruta del CRUD apenas la termino, en lugar de armar varias y probarlas juntas.
+- Separar la lógica de leer y guardar datos en un modelo (`Product.js`), que dejó el controlador mucho más limpio.
+
+
+## Hacer menos
+- Probar con la pestaña del JSON abierta. users.json y products.json se modifican solos con el servidor, y tenerlos abiertos en el editor generó un conflicto al guardar.
+- Resolver los errores por intuición. Fijarme primero en el mensaje de la terminal me ahorra tiempo.
+
+## Dejar de hacer
+- Dejar tareas terminadas sin marcar en el tablero.
+
+## Conclusiones
+Aprendí a guardar y leer datos desde archivos JSON y a armar las siete rutas de un CRUD con `method-override` para usar PUT y DELETE. Lo que más me costó fue el `enctype` del formulario y que `nodemon` reiniciara el servidor al guardar el JSON. Para el Sprint 5 quiero entender bien cómo funcionan las sesiones, antes de conectar el login.

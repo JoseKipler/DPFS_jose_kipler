@@ -31,8 +31,6 @@ Aprendí a usar Figma y a pensar la estructura del sitio antes de programar. Par
 
 # Retrospectiva Sprint 2
 
-Dinámica: estrella de mar.
-
 ## Comenzar a hacer
 
 - Revisar el funcionamiento de cada página en el navegador antes de darla por terminada.
@@ -77,7 +75,6 @@ Para el Sprint 3, mi objetivo es incorporar Node.js, Express y EJS, organizar me
 
 # Retrospectiva Sprint 3
 
-Dinámica: estrella de mar.
 
 ## Comenzar a hacer
 - Probar cada cambio en el navegador apenas lo hago, en vez de acumular varios.
@@ -121,3 +118,27 @@ Aprendí a organizar una aplicación con Express y EJS, y que los partials evita
 
 ## Conclusiones
 Aprendí a guardar y leer datos desde archivos JSON y a armar las siete rutas de un CRUD con `method-override` para usar PUT y DELETE. Lo que más me costó fue el `enctype` del formulario y que `nodemon` reiniciara el servidor al guardar el JSON. Para el Sprint 5 quiero entender bien cómo funcionan las sesiones, antes de conectar el login.
+
+---
+
+# Retrospectiva Sprint 5
+
+## Comenzar a hacer
+- Revisar el orden de los `app.use` en `app.js` cuando agrego un middleware nuevo: me falló `req.session` porque lo puse antes de configurar la sesión.
+- Probar cada pieza del flujo de usuarios por separado (registro, login, logout, perfil) antes de pasar a la siguiente.
+
+## Hacer más
+- Pensar los casos de error de los formularios (campos vacíos, email repetido, contraseñas distintas) y mostrarlos en pantalla.
+
+## Continuar haciendo
+- Avanzar por pasos y subir cada avance con su commit.
+- Probar el sitio con distintos usuarios (admin y usuario común) con y sin sesión.
+
+## Hacer menos
+- Tener abiertos `users.json` y `products.json` en el editor mientras pruebo: el servidor los modifica y VS Code me avisó de un conflicto al guardar.
+
+## Dejar de hacer
+- Dejar datos de prueba (usuarios y fotos) mezclados con los que voy a entregar.
+
+## Conclusiones
+Aprendí cómo funcionan las sesiones y las cookies, a encriptar contraseñas con bcrypt, a subir imágenes con Multer y a proteger rutas con middlewares. Lo que más me costó fue entender en qué orden se ejecutan los middlewares. Para el Sprint 6 quiero diseñar bien la base de datos antes de escribir código.

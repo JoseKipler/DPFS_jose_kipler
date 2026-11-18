@@ -9,7 +9,7 @@
 
     <nav class="breadcrumb" aria-label="Ubicación">
       <a href="/">Inicio</a> ›
-      <a href="/products" style="text-transform: capitalize;"><%= product.category.replace(/-/g, ' ') %></a> ›
+      <a href="/products"><%= product.category.name %></a> ›
       <span><%= product.name %></span>
     </nav>
 
@@ -28,10 +28,10 @@
         <h1><%= product.name %></h1>
 
         <div class="info__prices">
-          <span class="info__price">$ <%= product.price.toLocaleString('es-AR') %></span>
+          <span class="info__price">$ <%= Number(product.price).toLocaleString('es-AR') %></span>
         </div>
         <p class="info__installments">12 cuotas sin interés</p>
-        <p class="info__stock" style="text-transform: capitalize;">Colores: <%= product.colors.join(', ') %></p>
+        <p class="info__stock">Colores: <%= product.colors.map(color => color.name).join(', ') %></p>
 
         <div class="quantity">
           <label for="cantidad">Cantidad</label>
@@ -44,11 +44,15 @@
 
         <button class="btn btn-primary info__add">Agregar al carrito</button>
         <a href="/products/cart" class="btn btn-secondary info__buy">Comprar ahora</a>
-        <a href="/products/<%= product.id %>/edit" class="btn btn-secondary info__buy">Editar producto</a>
-        <form action="/products/<%= product.id %>?_method=DELETE" method="POST"
-              onsubmit="return confirm('¿Seguro que querés eliminar este producto?')">
-          <button type="submit" class="btn btn-danger info__buy">Eliminar producto</button>
-        </form>
+
+        <% if (isLogged) { %>
+          <a href="/products/<%= product.id %>/edit" class="btn btn-secondary info__buy">Editar producto</a>
+
+          <form action="/products/<%= product.id %>?_method=DELETE" method="POST"
+                onsubmit="return confirm('¿Seguro que querés eliminar este producto?')">
+            <button type="submit" class="btn btn-danger info__buy">Eliminar producto</button>
+          </form>
+        <% } %>
 
         <ul class="info__benefits">
           <li>Envío a todo el país</li>

@@ -8,54 +8,11 @@
   <main class="container">
     <section class="auth auth--wide">
       <h1>Crear producto</h1>
-
-      <form action="/products" method="POST" novalidate>
-
-        <div class="field">
-          <label for="name">Nombre del producto</label>
-          <input type="text" id="name" name="name" placeholder="Ej: Teclado mecánico RGB" required>
-        </div>
-
-        <div class="field">
-          <label for="description">Descripción</label>
-          <textarea id="description" name="description" rows="4" placeholder="Contá de qué se trata el producto"></textarea>
-        </div>
-
-        <div class="field">
-          <label for="image">Imagen (nombre del archivo)</label>
-          <input type="text" id="image" name="image" value="default.png">
-          <p class="field__hint">Tiene que ser un archivo de public/images. La subida de archivos se agrega más adelante.</p>
-        </div>
-
-        <div class="field">
-          <label for="category">Categoría</label>
-          <select id="category" name="category" required>
-            <option value="">Elegí una categoría</option>
-            <option value="teclados">Teclados</option>
-            <option value="mouse">Mouse</option>
-            <option value="auriculares">Auriculares</option>
-            <option value="monitores">Monitores</option>
-            <option value="placas-de-video">Placas de video</option>
-            <option value="sillas">Sillas</option>
-          </select>
-        </div>
-
-        <fieldset class="field options">
-          <legend>Colores</legend>
-          <label class="check"><input type="checkbox" name="colors" value="negro"> <span>Negro</span></label>
-          <label class="check"><input type="checkbox" name="colors" value="blanco"> <span>Blanco</span></label>
-          <label class="check"><input type="checkbox" name="colors" value="rojo"> <span>Rojo</span></label>
-          <label class="check"><input type="checkbox" name="colors" value="azul"> <span>Azul</span></label>
-        </fieldset>
-
-        <div class="field">
-          <label for="price">Precio</label>
-          <input type="number" id="price" name="price" min="0" step="1" placeholder="Ej: 85000" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Guardar producto</button>
-        <p class="auth__alt"><a href="/products">Cancelar y volver al listado</a></p>
-      </form>
+      <%- include('../partials/productForm', {
+        action: '/products',
+        submitLabel: 'Guardar producto',
+        cancelUrl: '/products'
+      }) %>
     </section>
   </main>
 

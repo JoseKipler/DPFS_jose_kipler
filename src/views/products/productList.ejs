@@ -22,6 +22,10 @@
 
       </div>
 
+      <p class="search__count">
+        <%= total %> producto<%= total === 1 ? '' : 's' %>
+      </p>
+
       <div class="products">
 
         <% products.forEach(product => { %>
@@ -31,6 +35,8 @@
         <% }) %>
 
       </div>
+
+      <%- include('../partials/pagination') %>
 
     </section>
 

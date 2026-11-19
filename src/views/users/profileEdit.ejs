@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <main class="container">
+    <section class="auth">
+      <h1>Editar perfil</h1>
+
+      <form action="/users/profile?_method=PUT" method="POST" enctype="multipart/form-data" novalidate>
+
+        <div class="field <%= errors.firstName ? 'field--error' : '' %>">
+          <label for="firstName">Nombre</label>
+          <input type="text" id="firstName" name="firstName" value="<%= old.firstName || '' %>">
+          <% if (errors.firstName) { %><p class="field__error"><%= errors.firstName %></p><% } %>
+        </div>
+
+        <div class="field <%= errors.lastName ? 'field--error' : '' %>">
+          <label for="lastName">Apellido</label>
+          <input type="text" id="lastName" name="lastName" value="<%= old.lastName || '' %>">
+          <% if (errors.lastName) { %><p class="field__error"><%= errors.lastName %></p><% } %>
+        </div>
+
+        <div class="field">
+          <label for="image">Cambiar foto de perfil (opcional)</label>
+          <input type="file" id="image" name="image" accept="image/*">
+        </div>
+
+        <p class="field__hint">El email no se puede modificar: <%= user.email %></p>
+
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <p class="auth__alt"><a href="/users/profile">Cancelar</a></p>
+      </form>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

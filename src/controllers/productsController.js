@@ -35,27 +35,44 @@ const validate = body => {
 };
 
 const productsController = {
-  list: async (req, res, next) => {
+   list: async (req, res, next) => {
     try {
+      const PAGE_SIZE = 8;
       const query = (req.query.q || '').trim();
+      const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
 
-      const products = await db.Product.findAll({
-        where: query
-          ? {
-              [Op.or]: [
-                { name: { [Op.like]: `%${query}%` } },
-                { description: { [Op.like]: `%${query}%` } }
-              ]
-            }
-          : {},
-        order: [['id', 'ASC']]
+      const where = query
+        ? {
+            [Op.or]: [
+              { name: { [Op.like]: `%${query}%` } },
+              { description: { [Op.like]: `%${query}%` } }
+            ]
+          }
+        : {};
+
+      const { count, rows } = await db.Product.findAndCountAll({
+        where,
+        order: [['id', 'ASC']],
+        limit: PAGE_SIZE,
+        offset: (page - 1) * PAGE_SIZE
       });
+
+      const totalPages = Math.max(Math.ceil(count / PAGE_SIZE), 1);
+
+      if (page > totalPages) {
+        const back = new URLSearchParams({ page: totalPages });
+        if (query) back.set('q', query);
+        return res.redirect('/products?' + back.toString());
+      }
 
       res.render('products/productList', {
         title: 'Productos | NEXUS',
         css: 'home',
-        products,
-        query
+        products: rows,
+        query,
+        page,
+        totalPages,
+        total: count
       });
     } catch (error) {
       next(error);

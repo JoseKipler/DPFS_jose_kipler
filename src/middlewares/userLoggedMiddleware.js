@@ -1,27 +1,33 @@
-const User = require('../models/User');
+const db = require('../../database/models');
+const toSessionUser = require('../utils/sessionUser');
 
-function userLoggedMiddleware(req, res, next) {
+async function userLoggedMiddleware(req, res, next) {
   res.locals.isLogged = false;
   res.locals.userLogged = null;
 
-  // Si no hay sesión pero hay cookie válida, loguea al usuario
-  const emailInCookie = req.signedCookies.userEmail;
+  try {
+    const emailInCookie = req.signedCookies.userEmail;
 
-  if (emailInCookie && !req.session.userLogged) {
-    const user = User.findByEmail(emailInCookie);
+    if (emailInCookie && !req.session.userLogged) {
+      const user = await db.User.findOne({
+        where: { email: emailInCookie },
+        include: ['category']
+      });
 
-    if (user) {
-      const { password: _password, ...safeUser } = user;
-      req.session.userLogged = safeUser;
+      if (user) {
+        req.session.userLogged = toSessionUser(user);
+      }
     }
-  }
 
-  if (req.session.userLogged) {
-    res.locals.isLogged = true;
-    res.locals.userLogged = req.session.userLogged;
-  }
+    if (req.session.userLogged) {
+      res.locals.isLogged = true;
+      res.locals.userLogged = req.session.userLogged;
+    }
 
-  next();
+    next();
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = userLoggedMiddleware;

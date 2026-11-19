@@ -1,0 +1,18 @@
+<% if (totalPages > 1) { %>
+  <% const extra = query ? '&q=' + encodeURIComponent(query) : ''; %>
+  <nav class="pagination" aria-label="Paginado">
+    <% if (page > 1) { %>
+      <a href="/products?page=<%= page - 1 %><%= extra %>">‹ Anterior</a>
+    <% } %>
+
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <a href="/products?page=<%= i %><%= extra %>"
+         class="<%= i === page ? 'is-active' : '' %>"
+         <%= i === page ? 'aria-current="page"' : '' %>><%= i %></a>
+    <% } %>
+
+    <% if (page < totalPages) { %>
+      <a href="/products?page=<%= page + 1 %><%= extra %>">Siguiente ›</a>
+    <% } %>
+  </nav>
+<% } %>

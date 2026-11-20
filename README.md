@@ -61,37 +61,37 @@ Se eligió como referencia internacional por su identidad visual orientada al ga
 
 ## Estructura del proyecto
 
-```text
 DPFS_jose_kipler/
-├── app.js                         # Servidor Express
-├── scripts/                       # Scripts auxiliares (hashPasswords.js)
+├── app.js                  (servidor Express)
 ├── package.json
+├── .env.example            (plantilla de variables de entorno)
+├── .sequelizerc
 ├── README.md
 ├── retro.md
-├── wireframes/                    # Wireframes del Sprint 1
+├── daily.md
+├── database/
+│   ├── config/             (configuración de Sequelize)
+│   ├── models/             (modelos y relaciones)
+│   ├── structure.sql
+│   ├── data.sql
+│   └── DER_nexus.pdf
+├── scripts/                (hashPasswords, generateDataSql y pruebas)
+├── wireframes/             (wireframes del Sprint 1)
 ├── public/
-│   ├── css/                       # Hojas de estilo
+│   ├── css/
 │   └── images/
-│       ├── favicon.svg
-│       └── users/                 # Fotos de perfil de usuarios
+│       └── users/          (fotos de perfil)
 └── src/
-    ├── data/                      # Datos JSON (products.json, users.json)
-    ├── middlewares/
-    │   ├── uploadUserImage.js     # Carga de imágenes de perfil
-    │   ├── userLoggedMiddleware.js
-    │   ├── guestMiddleware.js
-    │   └── authMiddleware.js
-    ├── models/
-    │   ├── Product.js
-    │   └── User.js
-    ├── routes/                    # Rutas principales, productos y usuarios
-    ├── controllers/               # Controladores principales, productos y usuarios
+    ├── data/               (products.json y users.json de origen)
+    ├── middlewares/        (uploadUserImage, userLogged, guest, auth)
+    ├── utils/
+    ├── routes/             (main, products, users)
+    ├── controllers/        (main, products, users)
     └── views/
         ├── index.ejs
-        ├── partials/              # Componentes reutilizables
-        ├── products/              # Vistas de productos y carrito
-        └── users/                 # Vistas de registro e inicio de sesión
-```
+        ├── partials/       (head, header, footer, productCard, productForm, pagination)
+        ├── products/       (productList, productDetail, productCart, productCreate, productEdit)
+        └── users/          (register, login, profile, profileEdit)
 
 
 ## Tablero de trabajo:
@@ -109,8 +109,10 @@ Actualmente, los formularios son visuales y todavía no cuentan con persistencia
 Sprint 4: los productos se guardan en `src/data/products.json` y cuentan con un CRUD completo (listado, detalle, creación, edición y eliminación). Los datos de usuarios de prueba están en `src/data/users.json`.
 
 
-- **Sprint 5:** registro con foto de perfil (Multer) y contraseña encriptada (bcrypt), login, logout, perfil, función "Recordarme" con cookie firmada y rutas separadas para huéspedes y usuarios con sesión.
-- **Pendiente:** el carrito todavía no guarda productos.
+Sprint 5: registro con foto de perfil (Multer) y contraseña encriptada (bcrypt), login, logout, perfil, función "Recordarme" con cookie firmada y rutas separadas para huéspedes y usuarios con sesión.
+**Pendiente:** el carrito todavía no guarda productos, aunque las tablas `carts` y `cart_items` ya existen.
+
+Sprint 6: los datos pasaron a una base MySQL, con diagrama de entidades y relaciones, scripts SQL de estructura y de datos, y modelos de Sequelize. Productos: crear, editar, eliminar, listar, ver detalle, buscar y paginado. Usuarios: registro, login, perfil y edición del perfil.
 
 ## Identidad visual
 
@@ -126,3 +128,94 @@ Sprint 4: los productos se guardan en `src/data/products.json` y cuentan con un 
 | Niebla | `#9A97B5` | Texto secundario |
 
 **Tipografías:** Chakra Petch (títulos, precios y logo) y DM Sans (textos, formularios y botones).
+
+
+
+--------------
+
+
+<!-- ## Tecnologías
+
+Node.js, Express, EJS, HTML y CSS. Base de datos MySQL, manejada con Sequelize. Paquetes: `method-override`, `multer` (subida de imágenes), `bcryptjs` (encriptado de contraseñas), `express-session`, `cookie-parser` y `dotenv`.
+
+## Cómo ejecutar el proyecto
+
+1. Clonar el repositorio e instalar las dependencias:
+
+```bash
+git clone https://github.com/JoseKipler/DPFS_jose_kipler.git
+cd DPFS_jose_kipler
+npm install
+```
+
+2. Crear la base de datos. En MySQL Workbench, abrir y ejecutar en este orden:
+   1. `database/structure.sql`: crea la base `nexus_db` y todas las tablas.
+   2. `database/data.sql`: carga productos, usuarios, categorías y colores de prueba.
+
+3. Crear un archivo `.env` en la raíz, copiando `.env.example` y completando tu usuario y contraseña de MySQL:
+
+```
+DB_USER=root
+DB_PASSWORD=tu_contraseña
+DB_NAME=nexus_db
+DB_HOST=127.0.0.1
+DB_PORT=3306
+```
+
+4. Iniciar el servidor:
+
+```bash
+npm run dev
+```
+
+El sitio queda disponible en `http://localhost:3000`.
+
+> `data.sql` vacía las tablas antes de cargar los datos, por lo que no debe ejecutarse sobre una base con información que se quiera conservar.
+
+## Usuarios de prueba
+
+Las contraseñas están encriptadas en la base, por eso se listan acá. Son datos de prueba, no de personas reales.
+
+| Email | Contraseña | Tipo |
+|---|---|---|
+| admin@nexus.com | Nexus1234 | Administrador |
+| lucia.fernandez@example.com | Clave1234 | Usuario |
+
+## Rutas principales
+
+| Método | Ruta | Acceso | Qué hace |
+|---|---|---|---|
+| GET | `/` | Todos | Home |
+| GET | `/products` | Todos | Listado con búsqueda (`?q=`) y paginado (`?page=`) |
+| GET | `/products/:id` | Todos | Detalle de producto |
+| GET | `/products/cart` | Todos | Carrito |
+| GET | `/products/create` | Con sesión | Formulario de creación |
+| POST | `/products` | Con sesión | Crea un producto |
+| GET | `/products/:id/edit` | Con sesión | Formulario de edición |
+| PUT | `/products/:id` | Con sesión | Edita un producto |
+| DELETE | `/products/:id` | Con sesión | Elimina un producto |
+| GET | `/users/register` | Solo huéspedes | Formulario de registro |
+| POST | `/users/register` | Solo huéspedes | Crea un usuario |
+| GET | `/users/login` | Solo huéspedes | Formulario de login |
+| POST | `/users/login` | Solo huéspedes | Inicia sesión |
+| GET | `/users/profile` | Con sesión | Perfil del usuario |
+| GET | `/users/profile/edit` | Con sesión | Formulario de edición del perfil |
+| PUT | `/users/profile` | Con sesión | Edita el perfil |
+| POST | `/users/logout` | Con sesión | Cierra la sesión |
+
+## Base de datos
+
+El diagrama de entidades y relaciones está en [`database/DER_nexus.pdf`](./database/DER_nexus.pdf).
+
+| Tabla | Contenido |
+|---|---|
+| `users` | Usuarios, con su categoría y contraseña encriptada |
+| `user_categories` | Tipos de usuario (admin y user) |
+| `products` | Productos, con su categoría |
+| `categories` | Categorías de productos |
+| `colors` | Colores disponibles |
+| `product_color` | Relación muchos a muchos entre productos y colores |
+| `carts` y `cart_items` | Carritos de compra y sus ítems |
+
+Los modelos de Sequelize están en `database/models/`, con todas sus relaciones.
+ -->

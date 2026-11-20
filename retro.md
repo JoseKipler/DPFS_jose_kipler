@@ -142,3 +142,27 @@ Aprendí a guardar y leer datos desde archivos JSON y a armar las siete rutas de
 
 ## Conclusiones
 Aprendí cómo funcionan las sesiones y las cookies, a encriptar contraseñas con bcrypt, a subir imágenes con Multer y a proteger rutas con middlewares. Lo que más me costó fue entender en qué orden se ejecutan los middlewares. Para el Sprint 6 quiero diseñar bien la base de datos antes de escribir código.
+
+
+# Retrospectiva Sprint 6
+
+## Comenzar a hacer
+- Verificar que un archivo de configuración tenga contenido antes de ejecutar un comando que depende de él: el `.sequelizerc` estaba vacío y `sequelize-cli init` creó las carpetas en el lugar equivocado.
+- Probar el proyecto clonándolo en una carpeta nueva antes de entregar: así detecté que `.env.example` tenía `DB_USER` vacío, algo que no veía en mi compu.
+
+## Hacer más
+- Diseñar la base de datos antes de escribir código: tener el diagrama y el `structure.sql` me ahorró cambios después.
+- Comprobar los datos en Workbench con consultas, para confirmar que lo que hace la aplicación quedó bien guardado.
+
+## Continuar haciendo
+- Mantener los datos originales en los JSON como respaldo hasta que todo funcione con la base.
+
+## Hacer menos
+- Ejecutar varias consultas juntas en Workbench (puede llegar a confundirte)
+
+## Dejar de hacer
+- Dar por sentado que un archivo viejo ya no se usa: antes de borrar los modelos del JSON, un `grep` mostró que tres archivos todavía los referenciaban.
+
+## Conclusiones
+Aprendí a diseñar una base relacional (relaciones 1 a N y N a N), a escribir los scripts SQL y a usar Sequelize con sus modelos y asociaciones. Lo que más me costó fue la configuración inicial de `sequelize-cli`. 
+

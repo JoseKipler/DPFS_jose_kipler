@@ -61,6 +61,7 @@ Se eligió como referencia internacional por su identidad visual orientada al ga
 
 ## Estructura del proyecto
 
+```
 DPFS_jose_kipler/
 ├── app.js                  (servidor Express)
 ├── package.json
@@ -92,6 +93,7 @@ DPFS_jose_kipler/
         ├── partials/       (head, header, footer, productCard, productForm, pagination)
         ├── products/       (productList, productDetail, productCart, productCreate, productEdit)
         └── users/          (register, login, profile, profileEdit)
+```
 
 
 ## Tablero de trabajo:

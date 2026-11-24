@@ -45,9 +45,10 @@
           <% if (errors.password2) { %><p class="field__error"><%= errors.password2 %></p><% } %>
         </div>
 
-        <div class="field">
+          <div class="field <%= errors.image ? 'field--error' : '' %>">
           <label for="image">Foto de perfil (opcional)</label>
-          <input type="file" id="image" name="image" accept="image/*">
+          <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.gif">
+          <% if (errors.image) { %><p class="field__error"><%= errors.image %></p><% } %>
         </div>
 
         <div class="field <%= errors.terms ? 'field--error' : '' %>">

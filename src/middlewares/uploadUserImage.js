@@ -1,22 +1,27 @@
 const multer = require('multer');
 const path = require('path');
 
+const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif'];
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, '../../public/images/users'));
   },
   filename: (req, file, cb) => {
-    const uniqueName = `user-${Date.now()}${path.extname(file.originalname)}`;
+    const uniqueName = `user-${Date.now()}${path.extname(file.originalname).toLowerCase()}`;
     cb(null, uniqueName);
   }
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowed = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
   const ext = path.extname(file.originalname).toLowerCase();
-  cb(null, allowed.includes(ext));
+
+  if (!ALLOWED_EXTENSIONS.includes(ext)) {
+    req.fileValidationError = 'La imagen debe ser JPG, JPEG, PNG o GIF.';
+    return cb(null, false);
+  }
+
+  cb(null, true);
 };
 
-const uploadUserImage = multer({ storage, fileFilter });
-
-module.exports = uploadUserImage;
+module.exports = multer({ storage, fileFilter });

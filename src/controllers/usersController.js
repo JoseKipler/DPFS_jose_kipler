@@ -1,10 +1,12 @@
+
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const db = require('../../database/models');
 const toSessionUser = require('../utils/sessionUser');
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const { validationResult } = require('express-validator');
+const formatErrors = require('../utils/formatErrors');
 
 const deleteImage = filename => {
   if (filename && filename !== 'default-user.png') {
@@ -24,48 +26,26 @@ const usersController = {
 
   processRegister: async (req, res, next) => {
     try {
-      const { firstName, lastName, email, password, password2, terms } = req.body;
-      const cleanEmail = (email || '').trim().toLowerCase();
-      const errors = {};
+      const result = validationResult(req);
 
-      if (!firstName || firstName.trim().length < 2) {
-        errors.firstName = 'Ingresá tu nombre (mínimo 2 caracteres).';
-      }
-      if (!lastName || lastName.trim().length < 2) {
-        errors.lastName = 'Ingresá tu apellido (mínimo 2 caracteres).';
-      }
-      if (!emailRegex.test(cleanEmail)) {
-        errors.email = 'Ingresá un email válido.';
-      } else if (await db.User.findOne({ where: { email: cleanEmail } })) {
-        errors.email = 'Este email ya está registrado.';
-      }
-      if (!password || password.length < 8) {
-        errors.password = 'La contraseña debe tener al menos 8 caracteres.';
-      }
-      if (password !== password2) {
-        errors.password2 = 'Las contraseñas no coinciden.';
-      }
-      if (!terms) {
-        errors.terms = 'Tenés que aceptar los términos y condiciones.';
-      }
-
-      if (Object.keys(errors).length > 0) {
+      if (!result.isEmpty()) {
         if (req.file) deleteImage(req.file.filename);
 
         return res.status(400).render('users/register', {
           title: 'Crear cuenta | NEXUS',
           css: 'forms',
-          errors,
+          errors: formatErrors(result),
           old: req.body
         });
       }
 
+      const { firstName, lastName, email, password } = req.body;
       const userCategory = await db.UserCategory.findOne({ where: { name: 'user' } });
 
       await db.User.create({
-        first_name: firstName.trim(),
-        last_name: lastName.trim(),
-        email: cleanEmail,
+        first_name: firstName,
+        last_name: lastName,
+        email,
         password: bcrypt.hashSync(password, 10),
         image: req.file ? req.file.filename : 'default-user.png',
         user_category_id: userCategory.id
@@ -151,6 +131,7 @@ const usersController = {
       if (!firstName || firstName.trim().length < 2) {
         errors.firstName = 'Ingresá tu nombre (mínimo 2 caracteres).';
       }
+
       if (!lastName || lastName.trim().length < 2) {
         errors.lastName = 'Ingresá tu apellido (mínimo 2 caracteres).';
       }
@@ -190,6 +171,7 @@ const usersController = {
 
   logout: (req, res) => {
     res.clearCookie('userEmail');
+
     req.session.destroy(() => {
       res.redirect('/');
     });

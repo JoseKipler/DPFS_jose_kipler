@@ -1,11 +1,9 @@
-
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator');
 const db = require('../../database/models');
 const toSessionUser = require('../utils/sessionUser');
-
-const { validationResult } = require('express-validator');
 const formatErrors = require('../utils/formatErrors');
 
 const deleteImage = filename => {
@@ -68,14 +66,21 @@ const usersController = {
 
   processLogin: async (req, res, next) => {
     try {
+      const result = validationResult(req);
+
+      if (!result.isEmpty()) {
+        return res.status(400).render('users/login', {
+          title: 'Iniciar sesión | NEXUS',
+          css: 'forms',
+          errors: formatErrors(result),
+          old: req.body
+        });
+      }
+
       const { email, password } = req.body;
-      const cleanEmail = (email || '').trim().toLowerCase();
 
-      const user = cleanEmail
-        ? await db.User.findOne({ where: { email: cleanEmail }, include: ['category'] })
-        : null;
-
-      const isValid = user && password && bcrypt.compareSync(password, user.password);
+      const user = await db.User.findOne({ where: { email }, include: ['category'] });
+      const isValid = user && bcrypt.compareSync(password, user.password);
 
       if (!isValid) {
         return res.status(401).render('users/login', {
@@ -131,7 +136,6 @@ const usersController = {
       if (!firstName || firstName.trim().length < 2) {
         errors.firstName = 'Ingresá tu nombre (mínimo 2 caracteres).';
       }
-
       if (!lastName || lastName.trim().length < 2) {
         errors.lastName = 'Ingresá tu apellido (mínimo 2 caracteres).';
       }
@@ -171,7 +175,6 @@ const usersController = {
 
   logout: (req, res) => {
     res.clearCookie('userEmail');
-
     req.session.destroy(() => {
       res.redirect('/');
     });

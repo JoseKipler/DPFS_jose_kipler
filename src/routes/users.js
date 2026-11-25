@@ -5,6 +5,7 @@ const uploadUserImage = require('../middlewares/uploadUserImage');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const registerValidation = require('../validations/registerValidation');
+const loginValidation = require('../validations/loginValidation');
 
 // Solo huéspedes
 router.get('/register', guestMiddleware, usersController.register);
@@ -18,7 +19,13 @@ router.post(
 );
 
 router.get('/login', guestMiddleware, usersController.login);
-router.post('/login', guestMiddleware, usersController.processLogin);
+
+router.post(
+    '/login',
+    guestMiddleware,
+    loginValidation,
+    usersController.processLogin
+);
 
 // Solo usuarios con sesión
 router.get('/profile', authMiddleware, usersController.profile);

@@ -44,6 +44,10 @@ app.use('/users', usersRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.listen(PORT, error => {
+  if (error) {
+    console.error(`No se pudo iniciar el servidor en el puerto ${PORT}:`, error.message);
+    process.exit(1);
+  }
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

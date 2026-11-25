@@ -1,5 +1,15 @@
+const fs = require('fs');
+const path = require('path');
+const { validationResult } = require('express-validator');
 const db = require('../../database/models');
+const formatErrors = require('../utils/formatErrors');
 const { Op } = db.Sequelize;
+
+const deleteImage = filename => {
+  if (filename && filename !== 'default.png') {
+    fs.unlink(path.join(__dirname, '../../public/images/products', filename), () => {});
+  }
+};
 
 const loadFormData = async () => ({
   categories: await db.Category.findAll({ order: [['name', 'ASC']] }),
@@ -9,35 +19,15 @@ const loadFormData = async () => ({
 const toValues = body => ({
   name: body.name || '',
   description: body.description || '',
-  image: body.image || 'default.png',
   category_id: String(body.category_id || ''),
   price: body.price || '',
   colorIds: [].concat(body.colors || []).map(String)
 });
 
-const validate = body => {
-  const errors = {};
-
-  if (!body.name || body.name.trim().length < 3) {
-    errors.name = 'El nombre debe tener al menos 3 caracteres.';
-  }
-  if (!body.description || body.description.trim().length < 10) {
-    errors.description = 'La descripción debe tener al menos 10 caracteres.';
-  }
-  if (!body.category_id) {
-    errors.category_id = 'Elegí una categoría.';
-  }
-  if (!body.price || Number(body.price) <= 0) {
-    errors.price = 'Ingresá un precio mayor a cero.';
-  }
-
-  return errors;
-};
-
 const productsController = {
-   list: async (req, res, next) => {
+  list: async (req, res, next) => {
     try {
-      const PAGE_SIZE = 8;
+      const PAGE_SIZE = 6;
       const query = (req.query.q || '').trim();
       const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
 
@@ -119,6 +109,7 @@ const productsController = {
         css: 'forms',
         ...(await loadFormData()),
         values: toValues({}),
+        currentImage: '',
         errors: {}
       });
     } catch (error) {
@@ -128,22 +119,25 @@ const productsController = {
 
   store: async (req, res, next) => {
     try {
-      const errors = validate(req.body);
+      const result = validationResult(req);
 
-      if (Object.keys(errors).length > 0) {
+      if (!result.isEmpty()) {
+        if (req.file) deleteImage(req.file.filename);
+
         return res.status(400).render('products/productCreate', {
           title: 'Crear producto | NEXUS',
           css: 'forms',
           ...(await loadFormData()),
           values: toValues(req.body),
-          errors
+          currentImage: '',
+          errors: formatErrors(result)
         });
       }
 
       const product = await db.Product.create({
-        name: req.body.name.trim(),
-        description: req.body.description.trim(),
-        image: req.body.image || 'default.png',
+        name: req.body.name,
+        description: req.body.description,
+        image: req.file ? req.file.filename : 'default.png',
         price: Number(req.body.price),
         category_id: req.body.category_id
       });
@@ -172,11 +166,11 @@ const productsController = {
         values: toValues({
           name: product.name,
           description: product.description,
-          image: product.image,
           category_id: product.category_id,
           price: Number(product.price),
           colors: product.colors.map(color => color.id)
         }),
+        currentImage: product.image,
         errors: {}
       });
     } catch (error) {
@@ -189,30 +183,39 @@ const productsController = {
       const product = await db.Product.findByPk(req.params.id);
 
       if (!product) {
+        if (req.file) deleteImage(req.file.filename);
         return res.status(404).send('Producto no encontrado');
       }
 
-      const errors = validate(req.body);
+      const result = validationResult(req);
 
-      if (Object.keys(errors).length > 0) {
+      if (!result.isEmpty()) {
+        if (req.file) deleteImage(req.file.filename);
+
         return res.status(400).render('products/productEdit', {
           title: 'Editar producto | NEXUS',
           css: 'forms',
           product,
           ...(await loadFormData()),
           values: toValues(req.body),
-          errors
+          currentImage: product.image,
+          errors: formatErrors(result)
         });
       }
 
-      await product.update({
-        name: req.body.name.trim(),
-        description: req.body.description.trim(),
-        image: req.body.image || 'default.png',
+      const changes = {
+        name: req.body.name,
+        description: req.body.description,
         price: Number(req.body.price),
         category_id: req.body.category_id
-      });
+      };
 
+      if (req.file) {
+        deleteImage(product.image);
+        changes.image = req.file.filename;
+      }
+
+      await product.update(changes);
       await product.setColors([].concat(req.body.colors || []));
 
       res.redirect('/products/' + product.id);
@@ -229,7 +232,9 @@ const productsController = {
         return res.status(404).send('Producto no encontrado');
       }
 
+      deleteImage(product.image);
       await product.destroy();
+
       res.redirect('/products');
     } catch (error) {
       next(error);

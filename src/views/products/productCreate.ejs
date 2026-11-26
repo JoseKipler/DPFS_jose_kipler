@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
@@ -8,15 +9,19 @@
   <main class="container">
     <section class="auth auth--wide">
       <h1>Crear producto</h1>
+
       <%- include('../partials/productForm', {
         action: '/products',
         submitLabel: 'Guardar producto',
         cancelUrl: '/products'
       }) %>
+
     </section>
   </main>
 
   <%- include('../partials/footer') %>
+
+  <script src="/js/validateProduct.js"></script>
 
 </body>
 </html>

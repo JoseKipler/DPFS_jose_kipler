@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
@@ -14,19 +15,25 @@
         <div class="field <%= errors.firstName ? 'field--error' : '' %>">
           <label for="firstName">Nombre</label>
           <input type="text" id="firstName" name="firstName" value="<%= old.firstName || '' %>" placeholder="Tu nombre">
-          <% if (errors.firstName) { %><p class="field__error"><%= errors.firstName %></p><% } %>
+          <% if (errors.firstName) { %>
+            <p class="field__error"><%= errors.firstName %></p>
+          <% } %>
         </div>
 
         <div class="field <%= errors.lastName ? 'field--error' : '' %>">
           <label for="lastName">Apellido</label>
           <input type="text" id="lastName" name="lastName" value="<%= old.lastName || '' %>" placeholder="Tu apellido">
-          <% if (errors.lastName) { %><p class="field__error"><%= errors.lastName %></p><% } %>
+          <% if (errors.lastName) { %>
+            <p class="field__error"><%= errors.lastName %></p>
+          <% } %>
         </div>
 
         <div class="field <%= errors.email ? 'field--error' : '' %>">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" value="<%= old.email || '' %>" placeholder="tu@email.com">
-          <% if (errors.email) { %><p class="field__error"><%= errors.email %></p><% } %>
+          <% if (errors.email) { %>
+            <p class="field__error"><%= errors.email %></p>
+          <% } %>
         </div>
 
         <div class="field <%= errors.password ? 'field--error' : '' %>">
@@ -42,13 +49,17 @@
         <div class="field <%= errors.password2 ? 'field--error' : '' %>">
           <label for="password2">Repetir contraseña</label>
           <input type="password" id="password2" name="password2">
-          <% if (errors.password2) { %><p class="field__error"><%= errors.password2 %></p><% } %>
+          <% if (errors.password2) { %>
+            <p class="field__error"><%= errors.password2 %></p>
+          <% } %>
         </div>
 
-          <div class="field <%= errors.image ? 'field--error' : '' %>">
+        <div class="field <%= errors.image ? 'field--error' : '' %>">
           <label for="image">Foto de perfil (opcional)</label>
           <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.gif">
-          <% if (errors.image) { %><p class="field__error"><%= errors.image %></p><% } %>
+          <% if (errors.image) { %>
+            <p class="field__error"><%= errors.image %></p>
+          <% } %>
         </div>
 
         <div class="field <%= errors.terms ? 'field--error' : '' %>">
@@ -56,17 +67,24 @@
             <input type="checkbox" name="terms" <%= old.terms ? 'checked' : '' %>>
             <span>Acepto los <a href="#">términos y condiciones</a></span>
           </label>
-          <% if (errors.terms) { %><p class="field__error"><%= errors.terms %></p><% } %>
+          <% if (errors.terms) { %>
+            <p class="field__error"><%= errors.terms %></p>
+          <% } %>
         </div>
 
         <button type="submit" class="btn btn-primary">Crear cuenta</button>
 
-        <p class="auth__alt">¿Ya tenés cuenta? <a href="/users/login">Iniciá sesión</a></p>
+        <p class="auth__alt">
+          ¿Ya tenés cuenta? <a href="/users/login">Iniciá sesión</a>
+        </p>
+
       </form>
     </section>
   </main>
 
   <%- include('../partials/footer') %>
+
+  <script src="/js/validateRegister.js"></script>
 
 </body>
 </html>

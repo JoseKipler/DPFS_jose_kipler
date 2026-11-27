@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
@@ -8,7 +9,10 @@ const formatErrors = require('../utils/formatErrors');
 
 const deleteImage = filename => {
   if (filename && filename !== 'default-user.png') {
-    fs.unlink(path.join(__dirname, '../../public/images/users', filename), () => {});
+    fs.unlink(
+      path.join(__dirname, '../../public/images/users', filename),
+      () => {}
+    );
   }
 };
 
@@ -38,7 +42,10 @@ const usersController = {
       }
 
       const { firstName, lastName, email, password } = req.body;
-      const userCategory = await db.UserCategory.findOne({ where: { name: 'user' } });
+
+      const userCategory = await db.UserCategory.findOne({
+        where: { name: 'user' }
+      });
 
       await db.User.create({
         first_name: firstName,
@@ -79,14 +86,20 @@ const usersController = {
 
       const { email, password } = req.body;
 
-      const user = await db.User.findOne({ where: { email }, include: ['category'] });
+      const user = await db.User.findOne({
+        where: { email },
+        include: ['category']
+      });
+
       const isValid = user && bcrypt.compareSync(password, user.password);
 
       if (!isValid) {
         return res.status(401).render('users/login', {
           title: 'Iniciar sesión | NEXUS',
           css: 'forms',
-          errors: { general: 'El email o la contraseña son incorrectos.' },
+          errors: {
+            general: 'El email o la contraseña son incorrectos.'
+          },
           old: { email }
         });
       }
@@ -123,40 +136,37 @@ const usersController = {
       css: 'forms',
       user,
       errors: {},
-      old: { firstName: user.firstName, lastName: user.lastName }
+      old: {
+        firstName: user.firstName,
+        lastName: user.lastName
+      }
     });
   },
 
   update: async (req, res, next) => {
     try {
-      const { firstName, lastName } = req.body;
       const sessionUser = req.session.userLogged;
-      const errors = {};
+      const result = validationResult(req);
 
-      if (!firstName || firstName.trim().length < 2) {
-        errors.firstName = 'Ingresá tu nombre (mínimo 2 caracteres).';
-      }
-      if (!lastName || lastName.trim().length < 2) {
-        errors.lastName = 'Ingresá tu apellido (mínimo 2 caracteres).';
-      }
-
-      if (Object.keys(errors).length > 0) {
+      if (!result.isEmpty()) {
         if (req.file) deleteImage(req.file.filename);
 
         return res.status(400).render('users/profileEdit', {
           title: 'Editar perfil | NEXUS',
           css: 'forms',
           user: sessionUser,
-          errors,
+          errors: formatErrors(result),
           old: req.body
         });
       }
 
-      const user = await db.User.findByPk(sessionUser.id, { include: ['category'] });
+      const user = await db.User.findByPk(sessionUser.id, {
+        include: ['category']
+      });
 
       const changes = {
-        first_name: firstName.trim(),
-        last_name: lastName.trim()
+        first_name: req.body.firstName.trim(),
+        last_name: req.body.lastName.trim()
       };
 
       if (req.file) {
@@ -167,6 +177,7 @@ const usersController = {
       await user.update(changes);
 
       req.session.userLogged = toSessionUser(user);
+
       res.redirect('/users/profile');
     } catch (error) {
       next(error);
@@ -175,6 +186,7 @@ const usersController = {
 
   logout: (req, res) => {
     res.clearCookie('userEmail');
+
     req.session.destroy(() => {
       res.redirect('/');
     });

@@ -1,11 +1,15 @@
+
 const express = require('express');
 const router = express.Router();
+
 const usersController = require('../controllers/usersController');
 const uploadUserImage = require('../middlewares/uploadUserImage');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
+
 const registerValidation = require('../validations/registerValidation');
 const loginValidation = require('../validations/loginValidation');
+const profileValidation = require('../validations/profileValidation');
 
 // Solo huéspedes
 router.get('/register', guestMiddleware, usersController.register);
@@ -29,12 +33,14 @@ router.post(
 
 // Solo usuarios con sesión
 router.get('/profile', authMiddleware, usersController.profile);
+
 router.get('/profile/edit', authMiddleware, usersController.edit);
 
 router.put(
     '/profile',
     authMiddleware,
     uploadUserImage.single('image'),
+    profileValidation,
     usersController.update
 );
 

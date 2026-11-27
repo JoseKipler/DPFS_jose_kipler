@@ -166,3 +166,25 @@ Aprendí cómo funcionan las sesiones y las cookies, a encriptar contraseñas co
 ## Conclusiones
 Aprendí a diseñar una base relacional (relaciones 1 a N y N a N), a escribir los scripts SQL y a usar Sequelize con sus modelos y asociaciones. Lo que más me costó fue la configuración inicial de `sequelize-cli`. 
 
+
+# Retrospectiva Sprint 7
+
+## Comenzar a hacer
+- Revisar que no haya un servidor viejo corriendo antes de arrancar otro: un proceso que quedó vivo ocupó el puerto 3000 y estuve probando código desactualizado sin saberlo.
+
+## Hacer más
+- Validar siempre en las dos capas: el navegador mejora la experiencia, pero el servidor es la protección real.
+- Probar saltándome el navegador (JavaScript desactivado, o modificando el HTML) para confirmar que el servidor rechaza los datos inválidos.
+
+## Continuar haciendo
+- Avanzar por formulario, y probar cada uno antes de pasar al siguiente.
+
+## Hacer menos
+- Probar sin comprobar que el servidor tenga el código nuevo.
+
+## Dejar de hacer
+- Dejar sin mensaje los errores de archivos: antes el filtro de imágenes descartaba el archivo inválido en silencio, y ahora avisa.
+
+## Conclusiones
+prendí a validar datos con Express Validator en el servidor y con JavaScript en el navegador, y por qué hacen falta las dos. Lo que más me costó fue diagnosticar el puerto ocupado. Para el Sprint 8 quiero repasar todo el flujo del sitio antes de entregar.
+
